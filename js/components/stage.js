@@ -30,13 +30,13 @@
         graphics.drawImage(
           Stage.frame,
           (idx + 1) * 200,
-          resolution.height - 150
+          resolution.height - 160
         )
 
         graphics.drawImage(
           projectsImages[project.image],
           ((idx + 1) * 200) + 10,
-          resolution.height - 140
+          resolution.height - 150
         )
       })
     }

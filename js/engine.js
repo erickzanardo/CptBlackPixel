@@ -1,7 +1,7 @@
 (() => {
   const resolution = {
-    width: 320,
-    height: 160
+    width: 360,
+    height: 180
   }
 
   const now = () => new Date().getTime();
