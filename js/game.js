@@ -4,7 +4,7 @@
 
   let loaded = false
   const GameLoop = {
-    init: (_width, _height) => {
+    init: (_width, _height, graphics) => {
       width = _width
       height = _height
 
@@ -24,7 +24,10 @@
 
       Promise.all([
         Player.load(),
-        Stage.load({ width, height })
+        // Stage need to be loaded before BackGround
+        Stage.load({ width, height }).then(() =>
+          BackGround.load(graphics, height)
+        ),
       ]).then(() => {
         loaded = true
       })
@@ -42,6 +45,7 @@
 
         graphics.save()
         Camera.render(graphics)
+        BackGround.render(graphics)
         Stage.render(graphics)
         Player.render(graphics)
 

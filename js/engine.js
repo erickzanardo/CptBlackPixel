@@ -6,7 +6,7 @@
 
   const now = () => new Date().getTime();
 
-  const Graphics = (ctx, scaleFactor, canvasWith) => {
+  const Graphics = (ctx, scaleFactor) => {
   const s = v => v * scaleFactor
 
     return ({
@@ -34,9 +34,23 @@
         } else {
           ctx.drawImage(image, s(sx), s(sy), s(image.width), s(image.height))
         }
+      },
+      createImage: (width, height, render) => {
+        const canvas = document.createElement("canvas")
+        canvas.width = s(width)
+        canvas.height = s(height)
+        const createdCtx = canvas.getContext("2d")
+        createdCtx.imageSmoothingEnabled = false;
+
+        const graphics = Graphics(createdCtx, scaleFactor)
+
+        render(graphics)
+
+        return canvas
       }
     })
   }
+
 
   const GameEngine = {
     start: (canvas, gameLoop, { showFPS } = {}) => {
@@ -57,7 +71,7 @@
 
       let time = now();
 
-      if (gameLoop.init) gameLoop.init(resolution.width, resolution.height)
+      if (gameLoop.init) gameLoop.init(resolution.width, resolution.height, graphics)
 
       const tick = () => {
         // Clear screen
