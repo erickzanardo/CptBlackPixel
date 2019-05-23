@@ -39,8 +39,6 @@
           resolution.height - 140
         )
       })
-
-      graphics.fill(0, resolution.height - 34, Stage.width, 50, "#e5e5e5")
     }
   }
 

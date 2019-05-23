@@ -25,8 +25,10 @@
       Promise.all([
         Player.load(),
         // Stage need to be loaded before BackGround
-        Stage.load({ width, height }).then(() =>
-          BackGround.load(graphics, height)
+        Stage.load({ width, height }).then(() => Promise.all([
+            BackGround.load(graphics, height),
+            Floor.load(graphics, height)
+          ])
         ),
       ]).then(() => {
         loaded = true
@@ -48,6 +50,7 @@
         BackGround.render(graphics)
         Stage.render(graphics)
         Player.render(graphics)
+        Floor.render(graphics)
 
         graphics.restore()
       }

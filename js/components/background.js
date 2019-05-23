@@ -12,7 +12,6 @@
           let x = 0, y = 0
 
           while (y < backGroundHeight) {
-            console.log(y)
             while (x < backGroundWidth) {
 
               graphics.drawImage(image, x, y)
