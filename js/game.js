@@ -43,6 +43,10 @@
           ])
         ),
       ]).then(() => {
+        if (!localStorage.getItem("already-played")) {
+          Modal.showHelpModal()
+          localStorage.setItem("already-played", true)
+        }
         loaded = true
       })
 

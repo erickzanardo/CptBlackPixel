@@ -56,16 +56,27 @@
         color: #1e14ad;
       }
 
-      #modalClose { 
+      #modalClose, #help-button { 
         position: absolute;
         top: 1%;
         right: 2%;
         cursor: pointer;
       }
+      
+      #help-button {
+        color: #fff;
+        font-family: Pixeled;
+      }
+
+      .help-text {
+        margin-top: 20%;
+      }
+
     </style>
   </head>
   <body>
     <canvas id="game"></canvas>
+    <div id="help-button" onclick="javascript:Modal.showHelpModal()">?</div>
     <div id="modal">
       <div id="modalClose" onclick="javascript:Modal.hide()">X</div>
       <div id="modalContent"></div>

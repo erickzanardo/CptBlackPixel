@@ -20,6 +20,11 @@
         ...project.description[1].map(link => "<li><a target=\"blank\" href=\"" + link + "\">" + link + "</a></li>"),
         "</ul>"
       ].join(""))
+    },
+    showHelpModal: () => {
+      Modal.show(
+        "<p class=\"help-text\">Use Arrows or A/D keys to move around</p>"
+      )
     }
   }
 
