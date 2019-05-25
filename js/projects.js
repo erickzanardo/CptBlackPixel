@@ -29,5 +29,15 @@
         "https://play.google.com/store/apps/details?id=xyz.luan.bgug"
       ]
     ],
+  }, {
+    name: "Portfolio",
+    image: "portfolio.png",
+    description: [
+      "This very portfolio game you are playing at the moment. I built this all from scratch, only using HTML5 and JS Canvas.",
+
+      [
+        "www.cptblackpixel.dev"
+      ]
+    ],
   }]
 })()
