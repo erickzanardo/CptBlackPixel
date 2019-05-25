@@ -50,7 +50,11 @@
         Player.idle.update(dt)
       } else {
         Player.running.update(dt)
-        Player.x += (20 / dt) * Player.speed
+        const newX = Player.x + (20 / dt) * Player.speed 
+
+        if (newX >= 0 && newX + 16 <= Stage.width) {
+          Player.x = newX
+        }
       }
     },
     render: graphics => {
