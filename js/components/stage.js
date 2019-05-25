@@ -6,11 +6,16 @@
   const Stage = {
     frame: null,
 
+    framesPosition: null,
     width: null,
     load: (_resolution) => {
       resolution = _resolution
 
       Stage.width = Projects.length * 300
+
+      Stage.framesPosition = Projects.map((_, idx) => ({
+        x: (idx + 1) * 200, w: 85,
+      }))
 
       return Promise.all([
         Images.load("assets/frame.png").then(image => {
@@ -25,17 +30,16 @@
       ])
     },
     render: graphics => {
-
       Projects.forEach((project, idx) => {
         graphics.drawImage(
           Stage.frame,
-          (idx + 1) * 200,
+          Stage.framesPosition[idx].x,
           resolution.height - 160
         )
 
         graphics.drawImage(
           projectsImages[project.image],
-          ((idx + 1) * 200) + 10,
+          Stage.framesPosition[idx].x + 10,
           resolution.height - 150
         )
       })

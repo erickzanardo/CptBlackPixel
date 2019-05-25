@@ -1,6 +1,6 @@
 (() => {
 
-  let onMoveLeft, onMoveRight, onStopMoving
+  let onMoveLeft, onMoveRight, onStopMoving, onAction, onCancel
 
   const Input = {
     onMoveLeft: _onMoveLeft => {
@@ -12,18 +12,32 @@
     onStopMoving: _onStopMoving => {
       onStopMoving = _onStopMoving
     },
+    onAction: _onAction => {
+      onAction = _onAction
+    },
+    onCancel: _onCancel => {
+      onCancel = _onCancel
+    },
     init: () => {
       document.addEventListener("keydown", event => {
-        if (event.key == "a" || event.key == "ArrowLeft") {
+        if (event.key === "a" || event.key === "ArrowLeft") {
           onMoveLeft()
-        } else if (event.key == "d" || event.key == "ArrowRight") {
+        } else if (event.key === "d" || event.key === "ArrowRight") {
           onMoveRight()
         }
       })
 
       document.addEventListener("keyup", event => {
-        if (event.key == "a" || event.key == "ArrowLeft" || event.key == "d" || event.key == "ArrowRight") {
+        if (event.key === "a" || event.key === "ArrowLeft" || event.key === "d" || event.key === "ArrowRight") {
           onStopMoving()
+        }
+
+        if (event.key === "Enter") {
+          onAction()
+        }
+
+        if (event.key === "Escape") {
+          onCancel()
         }
       })
 

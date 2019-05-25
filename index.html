@@ -2,6 +2,20 @@
   <head>
     <title>Cpt Black Pixel</title>
     <style text="text/css">
+      @font-face {
+        font-family: Pixeled;
+        src: url(assets/Pixeled.ttf);
+      }
+
+      @keyframes createBox {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
       body {
         margin: 0;
         background-color: #222;
@@ -11,11 +25,54 @@
         flex-direction: column;
         justify-content: center;
       }
+
+      #modal {
+        position: fixed;
+        top: 20%;
+        bottom: 20%;
+        left: 10%;
+        right: 10%;
+        background-color: #000;
+        border: 15px double #e7e7e7;
+        display: none;
+        animation: createBox .5s;
+
+        color: #fff;
+        font-family: Pixeled;
+      }
+
+      #modalContent {
+        height: 100%;
+        overflow: auto;
+        font-size: 12px;
+      }
+
+      #modal ul li {
+        list-style: none;
+      }
+
+
+      #modal a {
+        color: #1e14ad;
+      }
+
+      #modalClose { 
+        position: absolute;
+        top: 1%;
+        right: 2%;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
-    <canvas id="game" />
+    <canvas id="game"></canvas>
+    <div id="modal">
+      <div id="modalClose" onclick="javascript:Modal.hide()">X</div>
+      <div id="modalContent"></div>
+    </div>
   </body>
+  <script src="js/graphics.js"></script>
+  <script src="js/modal.js"></script>
   <script src="js/camera.js"></script>
   <script src="js/input.js"></script>
   <script src="js/images.js"></script>

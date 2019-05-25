@@ -22,6 +22,18 @@
         Player.stop()
       })
 
+      Input.onAction(() => {
+        if (Player.collidingFrame) {
+          Modal.showProjectModal(Player.collidingFrame)
+        }
+      })
+
+      Input.onCancel(() => {
+        if (Player.collidingFrame) {
+          Modal.hide()
+        }
+      })
+
       Promise.all([
         Player.load(),
         // Stage need to be loaded before BackGround

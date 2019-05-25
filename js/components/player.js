@@ -9,6 +9,8 @@
     idle: null,
     running: null,
 
+    collidingFrame: null,
+
     load: () => {
       Player.idle = SpriteSheet("assets/cpt/cpt-idle.png", 5, 2)
       Player.running = SpriteSheet("assets/cpt/cpt-running.png", 5, 4)
@@ -34,6 +36,16 @@
     },
 
     update: dt => {
+
+      Player.collidingFrame = null
+      for (let i = 0; i < Stage.framesPosition.length; i++) {
+        const pos = Stage.framesPosition[i];
+        if (Player.x >= pos.x && Player.x <= pos.x + pos.w) {
+          Player.collidingFrame = Projects[i];
+          break;
+        }
+      }
+
       if (Player.speed === 0) {
         Player.idle.update(dt)
       } else {
@@ -59,6 +71,15 @@
       }
 
       graphics.restore()
+
+      if (Player.collidingFrame) {
+        graphics.fillBox(
+          "Press Enter to view",
+          Player.x - 15,
+          Player.y - 10,
+          { fontSize: 4 }
+        )
+      }
     }
   }
 
