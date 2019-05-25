@@ -81,11 +81,16 @@
       graphics.restore()
 
       if (Player.collidingFrame) {
-        graphics.fillBox(
+        const textX = Player.x - 15
+        const textY = Player.y - 10
+
+        graphics.fill(textX - 4, textY - 8, 65, 10, "#000")
+
+        graphics.fillText(
           "Press Enter to view",
-          Player.x - 15,
-          Player.y - 10,
-          { fontSize: 4 }
+          textX,
+          textY,
+          { fontSize: 10 }
         )
       }
     }

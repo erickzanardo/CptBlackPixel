@@ -41,8 +41,9 @@
 
         return canvas
       },
-      fillBox: (text, x, y, { fontSize = 12, color = "#ffffff" }) => {
-        ctx.font = s(fontSize) + "px Pixeled"
+      fillText: (text, x, y, { fontSize = 12, color = "#ffffff" }) => {
+
+        ctx.font = s(fontSize) + "px Pixeltype"
         ctx.fillStyle = color
         ctx.fillText(text, s(x), s(y))
       }
