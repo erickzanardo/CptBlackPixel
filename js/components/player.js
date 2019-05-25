@@ -46,6 +46,10 @@
         }
       }
 
+      if (Player.collidingFrame === null && Modal.isProjectModalOpen) {
+        Modal.hide()
+      }
+
       if (Player.speed === 0) {
         Player.idle.update(dt)
       } else {
