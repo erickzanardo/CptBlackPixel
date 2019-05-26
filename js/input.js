@@ -1,6 +1,6 @@
 (() => {
 
-  let onMoveLeft, onMoveRight, onStopMoving, onAction, onCancel
+  let onMoveLeft, onMoveRight, onStopMoving, onAction, onCancel, onClick
 
   const Input = {
     onMoveLeft: _onMoveLeft => {
@@ -17,6 +17,9 @@
     },
     onCancel: _onCancel => {
       onCancel = _onCancel
+    },
+    onClick: _onClick => {
+      onClick = _onClick
     },
     init: () => {
       document.addEventListener("keydown", event => {
@@ -43,6 +46,14 @@
 
       const gameCanvas = document.querySelector("#game")
       const middleOfScreen = gameCanvas.width / 2
+
+      gameCanvas.addEventListener("click", e => {
+        const rect = e.target.getBoundingClientRect();
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
+        onClick({ x, y })
+      })
+
       gameCanvas.addEventListener("touchstart", evt => {
         const touch = evt.targetTouches[0]
 

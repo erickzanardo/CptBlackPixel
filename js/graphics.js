@@ -3,6 +3,7 @@
     const s = v => v * scaleFactor
 
     const instance = ({
+      realCoord: s,
       save: () => {
         ctx.save()
       },
@@ -41,7 +42,7 @@
 
         return canvas
       },
-      fillText: (text, x, y, { fontSize = 12, color = "#ffffff" }) => {
+      fillText: (text, x, y, { fontSize = 12, color = "#ffffff" } = {}) => {
 
         ctx.font = s(fontSize) + "px Pixeltype"
         ctx.fillStyle = color

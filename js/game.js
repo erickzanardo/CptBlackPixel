@@ -25,6 +25,21 @@
 
       SoundControl.init()
 
+      Input.onClick(({ x, y }) => {
+        const s = graphics.realCoord
+        const clickX = x - s(Camera.x)
+
+        if (clickX >= s(Stage.musicCreditBox.x) && clickX <= s(Stage.musicCreditBox.x + Stage.musicCreditBox.w) &&
+            y >= s(Stage.musicCreditBox.y) && y <= s(Stage.musicCreditBox.y + Stage.musicCreditBox.h)) {
+          document.getElementById("music-link").click()
+        }
+
+        if (clickX >= s(Stage.fontCreditBox.x) && clickX <= s(Stage.fontCreditBox.x + Stage.fontCreditBox.w) &&
+            y >= s(Stage.fontCreditBox.y) && y <= s(Stage.fontCreditBox.y + Stage.fontCreditBox.h)) {
+          document.getElementById("font-link").click()
+        }
+      })
+
       Input.onAction(() => {
         if (Player.collidingFrame) {
           Modal.showProjectModal(Player.collidingFrame)

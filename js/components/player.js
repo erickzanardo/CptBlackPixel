@@ -93,6 +93,15 @@
           { fontSize: 10 }
         )
       }
+
+      if (window.debug) {
+        graphics.fillText(
+          Player.x + " - " + Player.y,
+          Player.x,
+          Player.y,
+          { fontSize: 8 }
+        )
+      }
     }
   }
 

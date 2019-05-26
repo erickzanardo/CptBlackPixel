@@ -1,22 +1,23 @@
 (() => {
-  let x, player, stage, resolution, middleScreen
+  let player, stage, resolution, middleScreen
 
   const Camera = {
+    x: 0,
     init: (_player, _stage, _resolution) => {
       player = _player
       stage = _stage
       resolution = _resolution
 
       middleScreen = resolution.width / 2
-      x = 0
+      Camera.x = 0
     },
     update: () => {
       if (player.x >= middleScreen && player.x + middleScreen <= stage.width) {
-        x = (player.x - middleScreen) * -1
+        Camera.x = (player.x - middleScreen) * -1
       }
     },
     render: graphics => {
-      graphics.translate(x, 0)
+      graphics.translate(Camera.x, 0)
     }
   }
 
