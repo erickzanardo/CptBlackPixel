@@ -12,6 +12,7 @@
 
       Camera.init(Player, Stage, { width, height })
       Input.init()
+
       Input.onMoveLeft(() => {
         Player.moveLeft()
       })
@@ -21,6 +22,8 @@
       Input.onStopMoving(() => {
         Player.stop()
       })
+
+      SoundControl.init()
 
       Input.onAction(() => {
         if (Player.collidingFrame) {

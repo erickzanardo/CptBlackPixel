@@ -57,14 +57,23 @@
         color: #1e14ad;
       }
 
-      #modalClose, #help-button { 
+      #modalClose, #help-button {
         position: absolute;
-        top: 1%;
-        right: 2%;
+        top: 10px;
+        right: 10px;
         cursor: pointer;
       }
-      
+
       #help-button {
+        color: #fff;
+        font-family: Pixeltype;
+      }
+
+      #sound-control {
+        position: absolute;
+        top: 10px;
+        right: 150px;
+        cursor: pointer;
         color: #fff;
         font-family: Pixeltype;
       }
@@ -77,12 +86,15 @@
   </head>
   <body>
     <canvas id="game"></canvas>
-    <div id="help-button" onclick="javascript:Modal.showHelpModal()">?</div>
+    <div id="sound-control" onclick="javascript:SoundControl.toggle()"></div>
+    <div id="help-button" onclick="javascript:Modal.showHelpModal()">How to play</div>
     <div id="modal">
       <div id="modalClose" onclick="javascript:Modal.hide()">X</div>
       <div id="modalContent"></div>
     </div>
+    <audio id="music-player" src="assets/a-farming-we-will-go.mp3">
   </body>
+  <script src="js/sound.js"></script>
   <script src="js/graphics.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/camera.js"></script>
