@@ -27,6 +27,7 @@
       setMusicEnabled(!isMusicEnabled())
       SoundControl.run()
     },
+    isPlaying: () => musicEnabled,
     run: () => {
       if (isMusicEnabled()) {
         audioElement.play()

@@ -10,6 +10,7 @@
     running: null,
 
     collidingFrame: null,
+    collidingWithBand: false,
 
     load: () => {
       Player.idle = SpriteSheet("assets/cpt/cpt-idle.png", 5, 2)
@@ -44,6 +45,11 @@
           Player.collidingFrame = Projects[i];
           break;
         }
+      }
+
+      Player.collidingWithBand = false
+      if (Player.x >= Band.x && Player.x <= Band.x + Band.width) {
+        Player.collidingWithBand = true
       }
 
       if (Player.collidingFrame === null && Modal.isProjectModalOpen) {
@@ -88,6 +94,20 @@
 
         graphics.fillText(
           "Press Enter to view",
+          textX,
+          textY,
+          { fontSize: 10 }
+        )
+      }
+
+      if (Player.collidingWithBand) {
+        const textX = Player.x - 15
+        const textY = Player.y - 10
+
+        graphics.fill(textX - 4, textY - 8, 100, 10, "#000")
+
+        graphics.fillText(
+          "Press Enter to play/stop music",
           textX,
           textY,
           { fontSize: 10 }

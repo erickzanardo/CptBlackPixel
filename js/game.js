@@ -43,6 +43,8 @@
       Input.onAction(() => {
         if (Player.collidingFrame) {
           Modal.showProjectModal(Player.collidingFrame)
+        } else if(Player.collidingWithBand) {
+          SoundControl.toggle()
         }
       })
 
@@ -53,6 +55,7 @@
       })
 
       Promise.all([
+        Band.load(),
         Player.load(),
         // Stage need to be loaded before BackGround
         Stage.load({ width, height }).then(() => Promise.all([
@@ -72,6 +75,7 @@
     update: dt => {
       if (loaded) {
         Camera.update()
+        Band.update(dt)
         Player.update(dt)
       }
     },
@@ -83,6 +87,7 @@
         Camera.render(graphics)
         BackGround.render(graphics)
         Stage.render(graphics)
+        Band.render(graphics)
         Player.render(graphics)
         Floor.render(graphics)
 
