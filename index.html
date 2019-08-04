@@ -17,6 +17,10 @@
         }
       }
 
+      a {
+        color: #747574;
+      }
+
       body {
         font-size: 2em;
         margin: 0;
@@ -52,11 +56,6 @@
         list-style: none;
       }
 
-
-      #modal a {
-        color: #1e14ad;
-      }
-
       #modalClose, #help-button {
         position: absolute;
         top: 10px;
@@ -78,6 +77,13 @@
         font-family: Pixeltype;
       }
 
+      #about {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-family: Pixeltype;
+      }
+
       .help-text {
         margin-top: 20%;
       }
@@ -86,6 +92,7 @@
   </head>
   <body>
     <canvas id="game"></canvas>
+    <a id="about" href="/about.html">Contacts</a>
     <div id="sound-control" onclick="javascript:SoundControl.toggle()"></div>
     <div id="help-button" onclick="javascript:Modal.showHelpModal()">How to play</div>
     <div id="modal">
